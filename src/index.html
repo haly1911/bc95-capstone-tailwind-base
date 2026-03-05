@@ -11,20 +11,22 @@
       href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
       rel="stylesheet"
     />
+    <!-- link favicon -->
+     <link rel="shortcut icon" href="./img/favicon.ico" type="image/x-icon">
     <!-- link main css -->
     <link rel="stylesheet" href="./css/output.css" />
   </head>
   <body class="bg-white dark:bg-[#181c31]">
     <!-- header -->
-    <header>
+    <header class="sticky top-0">
       <nav class="wrapper flex justify-between items-center py-6">
         <div class="nav-left">
-          <a href="#">
+          <a href="">
             <img src="./img/logo-light.svg" class="inline-block dark:hidden" />
             <img src="./img/logo-dark.svg" class="hidden dark:inline-block" />
           </a>
         </div>
-        <div class="nav-center">
+        <div class="nav-center hidden lg:block">
           <ul class="flex gap-10 items-center">
             <li class="text-[#4e6bff]">
               <a href="">Home</a>
@@ -80,10 +82,60 @@
                 <line x1="17.66" y1="6.34" x2="19.78" y2="4.22"></line></svg
             ></span>
           </button>
-          <button onclick="window.location.href = ''" class="cursor-pointer">Sign In</button>
-          <button onclick="window.location.href = ''" class="cursor-pointer px-6 py-3 bg-blue-600 text-white rounded-full">Sign Up</button>
+          <button onclick="window.location.href = ''" class="hidden lg:block cursor-pointer">Sign In</button>
+          <button onclick="window.location.href = ''" class="hidden lg:block cursor-pointer px-6 py-3 bg-blue-600 text-white rounded-full">
+            Sign Up
+          </button>
+          <button id="menu-toggle" class="lg:hidden cursor-pointer">
+            <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+            </svg>
+          </button>
         </div>
       </nav>
+      <!-- mobile menu -->
+      <div
+        id="mobile-menu"
+        class="hidden lg:hidden m-4 rounded-lg border border-gray-200 dark:border-gray-700 bg-white dark:bg-[#1c2136] shadow-md"
+      >
+        <ul class="flex flex-col gap-10 p-10">
+          <li class="text-[#4e6bff]">
+            <a href="">Home</a>
+          </li>
+          <li class="hover:text-[#4e6bff]">
+            <a href="">Features</a>
+          </li>
+          <li class="group">
+            <button class="w-full flex items-center justify-between hover:text-[#4e6bff] cursor-pointer focus:outline-none">
+              <span>Pages</span>
+              <svg class="w-3 h-3" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+                <path
+                  fill="currentColor"
+                  d="M233.4 406.6c12.5 12.5 32.8 12.5 45.3 0l192-192c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L256 338.7 86.6 169.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l192 192z"
+                />
+              </svg>
+            </button>
+            <ul
+              class="hidden mt-5 py-5 bg-white dark:bg-[#181c31] shadow-sm rounded-lg border border-gray-100 dark:border-gray-600 group-focus-within:block"
+            >
+              <li><a href="#" class="block px-10 py-3 hover:text-[#4e6bff]">Blog Grid</a></li>
+              <li><a href="#" class="block px-10 py-3 hover:text-[#4e6bff]">Blog Single</a></li>
+              <li><a href="#" class="block px-10 py-3 hover:text-[#4e6bff]">Sign In</a></li>
+              <li><a href="#" class="block px-10 py-3 hover:text-[#4e6bff]">Sign Up</a></li>
+              <li><a href="#" class="block px-10 py-3 hover:text-[#4e6bff]">404</a></li>
+            </ul>
+          </li>
+          <li class="hover:text-[#4e6bff]">
+            <a href="">Support</a>
+          </li>
+          <li class="flex items-center gap-10 dark:text-white border-gray-200 dark:border-gray-700">
+            <button onclick="window.location.href = ''" class="cursor-pointer">Sign In</button>
+            <button onclick="window.location.href = ''" class="cursor-pointer px-6 py-3 bg-blue-600 text-white rounded-full">
+              Sign Up
+            </button>
+          </li>
+        </ul>
+      </div>
     </header>
     <!-- carousel -->
     <!-- features -->
@@ -116,6 +168,14 @@
       btn.addEventListener("click", () => {
         const isDark = root.classList.toggle("dark");
         localStorage.setItem("theme", isDark ? "dark" : "light");
+      });
+    </script>
+    <!-- mobile menu script -->
+    <script>
+      const menuBtn = document.getElementById("menu-toggle");
+      const mobileMenu = document.getElementById("mobile-menu");
+      menuBtn.addEventListener("click", () => {
+        mobileMenu.classList.toggle("hidden");
       });
     </script>
   </body>
