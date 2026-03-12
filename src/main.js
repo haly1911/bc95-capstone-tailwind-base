@@ -30,6 +30,9 @@ menuBtn.addEventListener("click", () => {
 
 // navbar scroll
 const navbar = document.getElementById("navbar");
+const navContent = document.getElementById("navbar-content");
+const navRight = document.getElementById("nav-right");
+const signupBtn = document.getElementById("signup-btn");
 const handleScroll = () => {
   const isScrolled = window.scrollY > 10;
   navbar.classList.toggle("bg-white", isScrolled);
@@ -38,5 +41,10 @@ const handleScroll = () => {
   navbar.classList.toggle("border-gray-200", isScrolled);
   navbar.classList.toggle("dark:border-gray-700", isScrolled);
   navbar.classList.toggle("shadow-sm", isScrolled);
+  navContent.classList.toggle("py-3", isScrolled);
+  navContent.classList.toggle("py-6", !isScrolled);
+  navRight.classList.toggle("text-gray-600", isScrolled);
+  navRight.classList.toggle("text-white", !isScrolled);
+  signupBtn.style.backgroundColor = isScrolled ? "#4e6bff" : "#6881ff";
 };
 window.addEventListener("scroll", handleScroll);

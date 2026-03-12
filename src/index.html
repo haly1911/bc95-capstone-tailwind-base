@@ -18,17 +18,17 @@
     <!-- link main css -->
     <link rel="stylesheet" href="./css/output.css" />
   </head>
-  <body class="bg-white dark:bg-[#181c31]">
+  <body class="bg-white dark:bg-[#181c31] relative leading-7 box-border">
     <!-- header -->
-    <header class="sticky top-0">
-      <nav class="wrapper flex justify-between items-center py-6">
-        <div class="nav-left">
+    <header id="navbar" class="fixed top-0 left-0 z-50 w-full">
+      <nav id="navbar-content" class="wrapper flex justify-between items-center py-6">
+        <div>
           <a href="">
             <img src="./img/logo-light.svg" class="inline-block dark:hidden" />
             <img src="./img/logo-dark.svg" class="hidden dark:inline-block" />
           </a>
         </div>
-        <div class="nav-center hidden lg:block">
+        <div class="hidden lg:block">
           <ul class="flex gap-10 items-center">
             <li class="text-[#4e6bff]">
               <a href="">Home</a>
@@ -61,7 +61,7 @@
             </li>
           </ul>
         </div>
-        <div class="nav-right flex items-center gap-7 dark:text-white">
+        <div id="nav-right" class="flex items-center gap-7 text-white">
           <button id="theme-toggle" class="cursor-pointer">
             <span class="hidden dark:block"><img src="./img/icon-moon.svg" class="w-7 h-7" /></span>
             <span class="dark:hidden"
@@ -85,7 +85,11 @@
             ></span>
           </button>
           <button onclick="window.location.href = ''" class="hidden lg:block cursor-pointer">Sign In</button>
-          <button onclick="window.location.href = ''" class="hidden lg:block cursor-pointer px-6 py-3 bg-blue-600 text-white rounded-full">
+          <button
+            onclick="window.location.href = ''"
+            id="signup-btn"
+            class="hidden lg:block cursor-pointer px-6 py-3 bg-[#6881ff] text-white rounded-full"
+          >
             Sign Up
           </button>
           <button id="menu-toggle" class="lg:hidden cursor-pointer">
@@ -132,7 +136,7 @@
           </li>
           <li class="flex items-center gap-10 dark:text-white border-gray-200 dark:border-gray-700">
             <button onclick="window.location.href = ''" class="cursor-pointer">Sign In</button>
-            <button onclick="window.location.href = ''" class="cursor-pointer px-6 py-3 bg-blue-600 text-white rounded-full">
+            <button onclick="window.location.href = ''" class="cursor-pointer px-6 py-3 bg-[#4e6bff] text-white rounded-full">
               Sign Up
             </button>
           </li>
@@ -140,10 +144,10 @@
       </div>
     </header>
     <!-- hero -->
-    <div class="relative sm:grid sm:grid-cols-2">
-      <div data-aos="fade-right" class="wrapper pt-32 pb-16 lg:pt-40 lg:pb-20 w-full">
-        <h1 class="text-3xl lg:text-4xl font-bold text-black dark:text-white">
-          We specialize in UI/UX, Web Development, Digital Marketing
+    <div class="relative sm:grid sm:grid-cols-5">
+      <div data-aos="fade-right" class="wrapper pt-32 pb-16 sm:col-span-3 lg:pt-40 lg:pb-20">
+        <h1 class="text-3xl lg:text-5xl font-bold text-black dark:text-white leading-16">
+          We specialize in UI/UX,<br />Web Development,<br>Digital Marketing
         </h1>
         <p class="my-6">
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Sed aliquid consequatur expedita doloribus molestiae, sit minus accusamus
@@ -160,11 +164,36 @@
         </div>
       </div>
       <div>
-        <img src="./img/shape-04.svg" class="absolute top-0 right-0 hidden sm:block w-1/2" />
-        <img src="./img/hero.png" class="absolute top-0 right-0 hidden sm:block w-1/2" />
+        <img src="./img/shape-04.svg" class="absolute top-0 right-0 hidden sm:block sm:w-2/5" />
+        <img src="./img/hero.png" class="absolute top-0 right-0 hidden sm:block sm:w-2/5" />
       </div>
     </div>
     <!-- features -->
+    <section id="features">
+      <div class="wrapper grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10 sm:py-16">
+        <div data-aos="fade-down" class="flex items-center gap-5">
+          <div class="bg-[#f36a8d] p-5 rounded-full"><img src="./img/icon-01.svg" class="w-16" /></div>
+          <div>
+            <h3 class="text-xl font-semibold text-black dark:text-white mb-2">24/7 Support</h3>
+            <p>Lorem, ipsum dolor sit amet soluta praesentium impedit laborum ipsum.</p>
+          </div>
+        </div>
+        <div data-aos="fade-down" data-aos-delay="150" class="flex items-center gap-5">
+          <div class="bg-[#20ca66] p-5 rounded-full"><img src="./img/icon-02.svg" class="w-16" /></div>
+          <div>
+            <h3 class="text-xl font-semibold text-black dark:text-white mb-2">Take Ownership</h3>
+            <p>Lorem, ipsum dolor sit amet soluta praesentium impedit laborum ipsum.</p>
+          </div>
+        </div>
+        <div data-aos="fade-down" data-aos-delay="300" class="flex items-center gap-5 max-w-sm sm:col-span-2 sm:justify-self-center lg:col-span-1">
+          <div class="bg-[#fa9161] p-5 rounded-full"><img src="./img/icon-03.svg" class="w-16" /></div>
+          <div>
+            <h3 class="text-xl font-semibold text-black dark:text-white mb-2">Team Work</h3>
+            <p>Lorem, ipsum dolor sit amet soluta praesentium impedit laborum ipsum.</p>
+          </div>
+        </div>
+      </div>
+    </section>
     <!-- about us -->
     <!-- team -->
     <!-- services -->
