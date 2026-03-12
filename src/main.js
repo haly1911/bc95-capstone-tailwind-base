@@ -4,6 +4,10 @@ AOS.init({
   once: true
 });
 
+const lightbox = GLightbox({
+  autoplayVideos: true
+});
+
 // dark mode switcher
 const root = document.documentElement;
 const btn = document.getElementById("theme-toggle");

@@ -15,6 +15,8 @@
     <link rel="shortcut icon" href="./img/favicon.ico" type="image/x-icon" />
     <!-- link aos -->
     <link rel="stylesheet" href="../node_modules/aos/dist/aos.css" />
+    <!-- link glightbox -->
+     <link rel="stylesheet" href="../node_modules/glightbox/dist/css/glightbox.min.css">
     <!-- link main css -->
     <link rel="stylesheet" href="./css/output.css" />
   </head>
@@ -144,30 +146,32 @@
       </div>
     </header>
     <!-- hero -->
-    <div class="relative sm:grid sm:grid-cols-5">
-      <div data-aos="fade-right" class="wrapper pt-32 pb-16 sm:col-span-3 lg:pt-40 lg:pb-20">
-        <h1 class="text-3xl lg:text-5xl font-bold text-black dark:text-white leading-16">
-          We specialize in UI/UX,<br />Web Development,<br>Digital Marketing
-        </h1>
-        <p class="my-6">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Sed aliquid consequatur expedita doloribus molestiae, sit minus accusamus
-          minima distinctio adipisci modi quaerat. Maiores, sequi odio.
-        </p>
-        <div class="flex flex-col lg:flex-row lg:items-center gap-5">
-          <div class="order-1 lg:order-2">
-            <a href="tel:+0123456789" class="text-black dark:text-white font-semibold">Call us (0123) 456 &ndash; 789</a>
-            <p>For any question or concern</p>
+    <section id="hero">
+      <div class="relative sm:grid sm:grid-cols-5">
+        <div data-aos="fade-right" class="wrapper pt-32 pb-16 sm:col-span-3 lg:pt-40 lg:pb-20">
+          <h1 class="text-3xl lg:text-5xl font-bold text-black dark:text-white lg:leading-16">
+            We specialize in UI/UX,<br />Web Development,<br />Digital Marketing
+          </h1>
+          <p class="my-6">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Sed aliquid consequatur expedita doloribus molestiae, sit minus
+            accusamus minima distinctio adipisci modi quaerat. Maiores, sequi odio.
+          </p>
+          <div class="flex flex-col lg:flex-row lg:items-center gap-5">
+            <div class="order-1 lg:order-2">
+              <a href="tel:+0123456789" class="text-black dark:text-white font-semibold">Call us (0123) 456 &ndash; 789</a>
+              <p>For any question or concern</p>
+            </div>
+            <button class="order-2 lg:order-1 bg-[#4e6bff] text-white rounded-full px-8 py-4 cursor-pointer hover:shadow-xl w-fit">
+              Get Started Now
+            </button>
           </div>
-          <button class="order-2 lg:order-1 bg-[#4e6bff] text-white rounded-full px-8 py-4 cursor-pointer hover:shadow-xl w-fit">
-            Get Started Now
-          </button>
+        </div>
+        <div>
+          <img src="./img/shape-04.svg" class="absolute top-0 right-0 hidden sm:block sm:w-2/5" />
+          <img src="./img/hero.png" class="absolute top-0 right-0 hidden sm:block sm:w-2/5" />
         </div>
       </div>
-      <div>
-        <img src="./img/shape-04.svg" class="absolute top-0 right-0 hidden sm:block sm:w-2/5" />
-        <img src="./img/hero.png" class="absolute top-0 right-0 hidden sm:block sm:w-2/5" />
-      </div>
-    </div>
+    </section>
     <!-- features -->
     <section id="features">
       <div class="wrapper grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10 sm:py-16">
@@ -185,7 +189,11 @@
             <p>Lorem, ipsum dolor sit amet soluta praesentium impedit laborum ipsum.</p>
           </div>
         </div>
-        <div data-aos="fade-down" data-aos-delay="300" class="flex items-center gap-5 max-w-sm sm:col-span-2 sm:justify-self-center lg:col-span-1">
+        <div
+          data-aos="fade-down"
+          data-aos-delay="300"
+          class="flex items-center gap-5 max-w-sm sm:col-span-2 sm:justify-self-center lg:col-span-1"
+        >
           <div class="bg-[#fa9161] p-5 rounded-full"><img src="./img/icon-03.svg" class="w-16" /></div>
           <div>
             <h3 class="text-xl font-semibold text-black dark:text-white mb-2">Team Work</h3>
@@ -195,6 +203,43 @@
       </div>
     </section>
     <!-- about us -->
+    <section id="about-us">
+      <div class="wrapper sm:flex sm:gap-20 sm:items-center py-16">
+        <div data-aos="fade-right" class="hidden relative sm:flex sm:gap-5 sm:w-1/2">
+          <div>
+            <img src="./img/shape-05.svg" class="absolute top-5 -left-5" />
+            <img src="./img/about-01.png" class="w-full mb-6" />
+            <img src="./img/about-02.png" class="w-full mb-6" />
+          </div>
+          <div>
+            <img src="./img/shape-06.svg" />
+            <img src="./img/about-03.png" class="my-6" />
+            <img src="./img/shape-07.svg" class="max-w-full mx-auto"/>
+          </div>
+        </div>
+        <div data-aos="fade-left" class="sm:w-1/2">
+          <h3 class="text-[#4e6bff] font-semibold mb-4">Why Choose Us</h3>
+          <h1 class="text-3xl lg:text-5xl font-bold text-black dark:text-white lg:leading-16">
+            We Make Our customers happy by giving Best services
+          </h1>
+          <p class="my-8">
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Molestiae, culpa. Voluptatum laudantium labore sapiente, illo ut
+            assumenda voluptas fuga tempore! Eaque commodi voluptates magnam quo.
+          </p>
+          <a href="https://www.youtube.com/watch?v=FCW1ia6zBK8&list=RDAmRYri-bhJo&index=4" class="glightbox flex items-center gap-5 group">
+            <div class="relative flex items-center justify-center">
+              <span class="absolute w-full h-full rounded-full bg-[#4e6bff] opacity-40 animate-ping"></span>
+              <span class="absolute w-full h-full rounded-full bg-[#4e6bff] opacity-30 animate-ping delay-500"></span>
+              <img
+                src="./img/icon-play.svg"
+                class="bg-[#4e6bff] rounded-full p-3 transition-transform duration-300 group-hover:scale-110"
+              />
+            </div>
+            <span>SEE HOW WE WORK</span>
+          </a>
+        </div>
+      </div>
+    </section>
     <!-- team -->
     <!-- services -->
     <!-- prices -->
@@ -207,6 +252,7 @@
     <!-- CTA -->
     <!-- footer -->
     <!-- back to top button -->
+     <script src="../node_modules/glightbox/dist/js/glightbox.min.js"></script>
     <script src="../node_modules/aos/dist/aos.js"></script>
     <script src="./main.js"></script>
   </body>
