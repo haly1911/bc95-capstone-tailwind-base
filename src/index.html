@@ -20,7 +20,7 @@
     <!-- link main css -->
     <link rel="stylesheet" href="./css/output.css" />
   </head>
-  <body class="bg-white dark:bg-[#181c31] relative leading-7 box-border">
+  <body class="bg-white dark:bg-[#181c31] relative leading-7 box-border overflow-x-hidden">
     <!-- header -->
     <header id="navbar" class="fixed top-0 left-0 z-50 w-full">
       <nav id="navbar-content" class="wrapper flex justify-between items-center py-6">
@@ -64,7 +64,7 @@
           </ul>
         </div>
         <div id="nav-right" class="flex items-center gap-7 text-white">
-          <button id="theme-toggle" class="cursor-pointer">
+          <button id="theme-toggle" class="cursor-pointer min-[1880px]:text-gray-600 dark:min-[1880px]:text-white">
             <span class="hidden dark:block"><img src="./img/icon-moon.svg" class="w-7 h-7" /></span>
             <span class="dark:hidden"
               ><svg
@@ -86,7 +86,7 @@
                 <line x1="17.66" y1="6.34" x2="19.78" y2="4.22"></line></svg
             ></span>
           </button>
-          <button onclick="window.location.href = ''" class="hidden lg:block cursor-pointer">Sign In</button>
+          <button onclick="window.location.href = ''" class="hidden lg:block cursor-pointer min-[1980px]:text-gray-600 dark:min-[1980px]:text-white">Sign In</button>
           <button
             onclick="window.location.href = ''"
             id="signup-btn"
@@ -147,28 +147,35 @@
     </header>
     <!-- hero -->
     <section id="hero">
-      <div class="relative sm:grid sm:grid-cols-5">
-        <div data-aos="fade-right" class="wrapper pt-32 pb-16 sm:col-span-3 lg:pt-40 lg:pb-20">
-          <h1 class="text-3xl lg:text-5xl font-bold text-black dark:text-white lg:leading-16">
-            We specialize in UI/UX,<br />Web Development,<br />Digital Marketing
-          </h1>
-          <p class="my-6">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Sed aliquid consequatur expedita doloribus molestiae, sit minus
-            accusamus minima distinctio adipisci modi quaerat. Maiores, sequi odio.
-          </p>
-          <div class="flex flex-col lg:flex-row lg:items-center gap-5">
-            <div class="order-1 lg:order-2">
-              <a href="tel:+0123456789" class="text-black dark:text-white font-semibold">Call us (0123) 456 &ndash; 789</a>
-              <p>For any question or concern</p>
+      <div class="relative">
+        <div data-aos="fade-right" class="wrapper pt-32 pb-16 lg:pt-40 lg:pb-20">
+          <div class="grid grid-cols-1 sm:grid-cols-5 items-center">
+            <div class="sm:col-span-3">
+              <h1 class="text-3xl lg:text-5xl font-bold text-black dark:text-white lg:leading-16">
+                We specialize in UI/UX, Web Development, Digital Marketing
+              </h1>
+              <p class="my-6">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Sed aliquid consequatur expedita doloribus molestiae, sit minus
+                accusamus minima distinctio adipisci modi quaerat. Maiores, sequi odio.
+              </p>
+              <div class="flex flex-col lg:flex-row lg:items-center gap-5">
+                <div class="order-1 lg:order-2">
+                  <a href="tel:+0123456789" class="text-black dark:text-white font-semibold">Call us (0123) 456 &ndash; 789</a>
+                  <p>For any question or concern</p>
+                </div>
+                <button class="order-2 lg:order-1 bg-[#4e6bff] text-white rounded-full px-8 py-4 cursor-pointer hover:shadow-xl w-fit">
+                  Get Started Now
+                </button>
+              </div>
             </div>
-            <button class="order-2 lg:order-1 bg-[#4e6bff] text-white rounded-full px-8 py-4 cursor-pointer hover:shadow-xl w-fit">
-              Get Started Now
-            </button>
           </div>
         </div>
         <div>
-          <img src="./img/shape-04.svg" class="absolute top-0 right-0 hidden sm:block sm:w-2/5" />
-          <img src="./img/hero.png" class="absolute top-0 right-0 hidden sm:block sm:w-2/5" />
+          <img src="./img/shape-01.svg" class="absolute top-50 right-137 hidden min-[1530px]:block z-1">
+          <img src="./img/shape-02.svg" class="absolute top-125 right-30 hidden min-[1530px]:block z-1">
+          <img src="./img/shape-03.svg" class="absolute top-110 right-115 hidden min-[1530px]:block z-1">
+          <img src="./img/shape-04.svg" class="absolute top-0 right-0 hidden sm:block sm:max-w-2/5 sm:max-h-full" />
+          <img src="./img/hero.png" class="absolute top-0 right-0 hidden sm:block sm:max-w-2/5 sm:max-h-full" />
         </div>
       </div>
     </section>
@@ -249,13 +256,15 @@
         <img src="./img/shape-10.svg" class="absolute top-10 left-1/5" />
         <img src="./img/shape-11.svg" class="absolute top-1/5 right-1/5 animate-spin [animation-duration:7s]" />
         <div class="wrapper text-center relative lg:w-1/2" data-aos="fade-down">
-          <h1 class="text-3xl lg:text-5xl font-bold text-black dark:text-white lg:leading-16 my-6">Meet With Our Creative Dedicated Team</h1>
+          <h1 class="text-3xl lg:text-5xl font-bold text-black dark:text-white lg:leading-16 my-6">
+            Meet With Our Creative Dedicated Team
+          </h1>
           <p>
             Lorem ipsum dolor sit amet consectetur adipisicing elit. A incidunt enim labore dignissimos sunt aliquam quia quos, quae fugit
             ipsam?
           </p>
         </div>
-        <div class="wrapper relative grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 my-8 sm:my-16 sm:gap-12 lg:mx-16">
+        <div class="wrapper relative grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 mt-4 sm:mt-16 sm:gap-12 lg:px-16">
           <div class="text-center" data-aos="fade-down">
             <div class="relative overflow-hidden group mb-8">
               <img src="./img/team-01.png" class="w-full" />
@@ -380,6 +389,49 @@
       </div>
     </section>
     <!-- services -->
+    <section id="services">
+      <div data-aos="fade-down" class="wrapper text-center sm:w-4/5 lg:w-1/2">
+        <h1 class="text-3xl lg:text-5xl font-bold text-black dark:text-white lg:leading-16 my-6">
+          We Offer The Best Quality Service for You
+        </h1>
+        <p>
+          Lorem, ipsum dolor sit amet consectetur adipisicing elit. Eaque est fuga nulla, minima exercitationem commodi nemo quam iure
+          itaque sint nobis.
+        </p>
+      </div>
+      <div class="wrapper grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 mt-4 sm:mt-8 lg:px-10">
+        <div data-aos="fade-down" class="p-14 rounded-md hover:shadow-gray-200 hover:shadow-2xl">
+          <img src="./img/icon-04.svg" class="mb-6" />
+          <h3 class="text-2xl font-semibold text-black dark:text-white mb-3">Crafted for Startups</h3>
+          <p>Lorem ipsum dolor amet placeat consectetur adipisicing elit. Omnis veritatis qui quaerat maxime alias.</p>
+        </div>
+        <div data-aos="fade-down" data-aos-delay="100" class="p-14 rounded-md hover:shadow-gray-200 hover:shadow-2xl">
+          <img src="./img/icon-05.svg" class="mb-6" />
+          <h3 class="text-2xl font-semibold text-black dark:text-white mb-3">High-quality Design</h3>
+          <p>Lorem ipsum dolor amet placeat consectetur adipisicing elit. Omnis veritatis qui quaerat maxime alias.</p>
+        </div>
+        <div data-aos="fade-down" data-aos-delay="200" class="p-14 rounded-md hover:shadow-gray-200 hover:shadow-2xl">
+          <img src="./img/icon-06.svg" class="mb-6" />
+          <h3 class="text-2xl font-semibold text-black dark:text-white mb-3">All Essential Sections</h3>
+          <p>Lorem ipsum dolor amet placeat consectetur adipisicing elit. Omnis veritatis qui quaerat maxime alias.</p>
+        </div>
+        <div data-aos="fade-down" data-aos-delay="300" class="p-14 rounded-md hover:shadow-gray-200 hover:shadow-2xl">
+          <img src="./img/icon-07.svg" class="mb-6" />
+          <h3 class="text-2xl font-semibold text-black dark:text-white mb-3">Speed Optimized</h3>
+          <p>Lorem ipsum dolor amet placeat consectetur adipisicing elit. Omnis veritatis qui quaerat maxime alias.</p>
+        </div>
+        <div data-aos="fade-down" data-aos-delay="400" class="p-14 rounded-md hover:shadow-gray-200 hover:shadow-2xl">
+          <img src="./img/icon-05.svg" class="mb-6" />
+          <h3 class="text-2xl font-semibold text-black dark:text-white mb-3">Fully Customizable</h3>
+          <p>Lorem ipsum dolor amet placeat consectetur adipisicing elit. Omnis veritatis qui quaerat maxime alias.</p>
+        </div>
+        <div data-aos="fade-down" data-aos-delay="500" class="p-14 rounded-md hover:shadow-gray-200 hover:shadow-2xl">
+          <img src="./img/icon-06.svg" class="mb-6" />
+          <h3 class="text-2xl font-semibold text-black dark:text-white mb-3">Regular Updates</h3>
+          <p>Lorem ipsum dolor amet placeat consectetur adipisicing elit. Omnis veritatis qui quaerat maxime alias.</p>
+        </div>
+      </div>
+    </section>
     <!-- prices -->
     <!-- projects -->
     <!-- testimonials -->
