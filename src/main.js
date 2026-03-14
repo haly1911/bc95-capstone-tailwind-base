@@ -52,3 +52,27 @@ const handleScroll = () => {
   signupBtn.style.backgroundColor = isScrolled ? "#4e6bff" : "#6881ff";
 };
 window.addEventListener("scroll", handleScroll);
+
+// pricing switcher
+const pricingSwitcher = document.querySelector("#pricing-switcher");
+const switchDot = document.querySelector("#switch-dot");
+const priceElements = document.querySelectorAll(".price");
+const pricingDuration = document.querySelectorAll(".pricing-duration");
+
+let isAnnually = false;
+
+pricingSwitcher.addEventListener("click", () => {
+  isAnnually = !isAnnually;
+  if (isAnnually) {
+    switchDot.classList.replace("translate-x-1", "translate-x-5");
+  } else {
+    switchDot.classList.replace("translate-x-5", "translate-x-1");
+  }
+  priceElements.forEach((el) => {
+    const { monthly, annually } = el.dataset;
+    el.innerText = isAnnually ? annually : monthly;
+  });
+  pricingDuration.forEach((el) => {
+    el.innerText = isAnnually ? "/ per year" : "/ per month";
+  });
+});
