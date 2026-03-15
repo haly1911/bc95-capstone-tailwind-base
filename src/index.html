@@ -11,20 +11,26 @@
       href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
       rel="stylesheet"
     />
+    <!-- link favicon -->
+    <link rel="shortcut icon" href="./img/favicon.ico" type="image/x-icon" />
+    <!-- link aos -->
+    <link rel="stylesheet" href="../node_modules/aos/dist/aos.css" />
+    <!-- link glightbox -->
+    <link rel="stylesheet" href="../node_modules/glightbox/dist/css/glightbox.min.css" />
     <!-- link main css -->
     <link rel="stylesheet" href="./css/output.css" />
   </head>
-  <body class="bg-white dark:bg-[#181c31]">
+  <body class="bg-white dark:bg-[#181c31] relative leading-7 box-border overflow-x-hidden">
     <!-- header -->
-    <header>
-      <nav class="wrapper flex justify-between items-center py-6">
-        <div class="nav-left">
-          <a href="#">
+    <header id="navbar" class="fixed top-0 left-0 z-50 w-full">
+      <nav id="navbar-content" class="wrapper flex justify-between items-center py-6">
+        <div>
+          <a href="">
             <img src="./img/logo-light.svg" class="inline-block dark:hidden" />
             <img src="./img/logo-dark.svg" class="hidden dark:inline-block" />
           </a>
         </div>
-        <div class="nav-center">
+        <div class="hidden lg:block">
           <ul class="flex gap-10 items-center">
             <li class="text-[#4e6bff]">
               <a href="">Home</a>
@@ -57,8 +63,8 @@
             </li>
           </ul>
         </div>
-        <div class="nav-right flex items-center gap-7 dark:text-white">
-          <button id="theme-toggle" class="cursor-pointer">
+        <div id="nav-right" class="flex items-center gap-7 text-white">
+          <button id="theme-toggle" class="cursor-pointer min-[1880px]:text-gray-600 dark:min-[1880px]:text-white">
             <span class="hidden dark:block"><img src="./img/icon-moon.svg" class="w-7 h-7" /></span>
             <span class="dark:hidden"
               ><svg
@@ -80,18 +86,541 @@
                 <line x1="17.66" y1="6.34" x2="19.78" y2="4.22"></line></svg
             ></span>
           </button>
-          <button onclick="window.location.href = ''" class="cursor-pointer">Sign In</button>
-          <button onclick="window.location.href = ''" class="cursor-pointer px-6 py-3 bg-blue-600 text-white rounded-full">Sign Up</button>
+          <button
+            onclick="window.location.href = ''"
+            class="hidden lg:block cursor-pointer min-[1980px]:text-gray-600 dark:min-[1980px]:text-white"
+          >
+            Sign In
+          </button>
+          <button
+            onclick="window.location.href = ''"
+            id="signup-btn"
+            class="hidden lg:block cursor-pointer px-6 py-3 bg-[#6881ff] text-white rounded-full"
+          >
+            Sign Up
+          </button>
+          <button id="menu-toggle" class="lg:hidden cursor-pointer">
+            <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+            </svg>
+          </button>
         </div>
       </nav>
+      <!-- mobile menu -->
+      <div
+        id="mobile-menu"
+        class="hidden lg:hidden m-4 rounded-lg border border-gray-200 dark:border-gray-700 bg-white dark:bg-[#1c2136] shadow-md"
+      >
+        <ul class="flex flex-col gap-10 p-10">
+          <li class="text-[#4e6bff]">
+            <a href="">Home</a>
+          </li>
+          <li class="hover:text-[#4e6bff]">
+            <a href="">Features</a>
+          </li>
+          <li class="group">
+            <button class="w-full flex items-center justify-between hover:text-[#4e6bff] cursor-pointer focus:outline-none">
+              <span>Pages</span>
+              <svg class="w-3 h-3" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+                <path
+                  fill="currentColor"
+                  d="M233.4 406.6c12.5 12.5 32.8 12.5 45.3 0l192-192c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L256 338.7 86.6 169.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l192 192z"
+                />
+              </svg>
+            </button>
+            <ul
+              class="hidden mt-5 py-5 bg-white dark:bg-[#181c31] shadow-sm rounded-lg border border-gray-100 dark:border-gray-600 group-focus-within:block"
+            >
+              <li><a href="#" class="block px-10 py-3 hover:text-[#4e6bff]">Blog Grid</a></li>
+              <li><a href="#" class="block px-10 py-3 hover:text-[#4e6bff]">Blog Single</a></li>
+              <li><a href="#" class="block px-10 py-3 hover:text-[#4e6bff]">Sign In</a></li>
+              <li><a href="#" class="block px-10 py-3 hover:text-[#4e6bff]">Sign Up</a></li>
+              <li><a href="#" class="block px-10 py-3 hover:text-[#4e6bff]">404</a></li>
+            </ul>
+          </li>
+          <li class="hover:text-[#4e6bff]">
+            <a href="">Support</a>
+          </li>
+          <li class="flex items-center gap-10 dark:text-white border-gray-200 dark:border-gray-700">
+            <button onclick="window.location.href = ''" class="cursor-pointer">Sign In</button>
+            <button onclick="window.location.href = ''" class="cursor-pointer px-6 py-3 bg-[#4e6bff] text-white rounded-full">
+              Sign Up
+            </button>
+          </li>
+        </ul>
+      </div>
     </header>
-    <!-- carousel -->
+    <!-- hero -->
+    <section id="hero">
+      <div class="relative">
+        <div data-aos="fade-right" class="wrapper pt-32 pb-16 lg:pt-40 lg:pb-20">
+          <div class="grid grid-cols-1 sm:grid-cols-5 items-center">
+            <div class="sm:col-span-3">
+              <h1 class="text-3xl lg:text-5xl font-bold text-black dark:text-white lg:leading-16">
+                We specialize in UI/UX, Web Development, Digital Marketing
+              </h1>
+              <p class="my-6">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Sed aliquid consequatur expedita doloribus molestiae, sit minus
+                accusamus minima distinctio adipisci modi quaerat. Maiores, sequi odio.
+              </p>
+              <div class="flex flex-col lg:flex-row lg:items-center gap-5">
+                <div class="order-1 lg:order-2">
+                  <a href="tel:+0123456789" class="text-black dark:text-white font-semibold">Call us (0123) 456 &ndash; 789</a>
+                  <p>For any question or concern</p>
+                </div>
+                <button class="order-2 lg:order-1 bg-[#4e6bff] text-white rounded-full px-8 py-4 cursor-pointer hover:shadow-xl w-fit">
+                  Get Started Now
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div>
+          <img src="./img/shape-01.svg" class="absolute top-50 right-137 hidden min-[1530px]:block z-1" />
+          <img src="./img/shape-02.svg" class="absolute top-125 right-30 hidden min-[1530px]:block z-1" />
+          <img src="./img/shape-03.svg" class="absolute top-110 right-115 hidden min-[1530px]:block z-1" />
+          <img src="./img/shape-04.svg" class="absolute top-0 right-0 hidden sm:block sm:max-w-2/5 sm:max-h-full" />
+          <img src="./img/hero.png" class="absolute top-0 right-0 hidden sm:block sm:max-w-2/5 sm:max-h-full" />
+        </div>
+      </div>
+    </section>
     <!-- features -->
+    <section id="features">
+      <div class="wrapper grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10 sm:py-16">
+        <div data-aos="fade-down" class="flex items-center gap-5">
+          <div class="bg-[#f36a8d] p-5 rounded-full"><img src="./img/icon-01.svg" class="w-16" /></div>
+          <div>
+            <h3 class="text-xl font-semibold text-black dark:text-white mb-2">24/7 Support</h3>
+            <p>Lorem, ipsum dolor sit amet soluta praesentium impedit laborum ipsum.</p>
+          </div>
+        </div>
+        <div data-aos="fade-down" data-aos-delay="150" class="flex items-center gap-5">
+          <div class="bg-[#20ca66] p-5 rounded-full"><img src="./img/icon-02.svg" class="w-16" /></div>
+          <div>
+            <h3 class="text-xl font-semibold text-black dark:text-white mb-2">Take Ownership</h3>
+            <p>Lorem, ipsum dolor sit amet soluta praesentium impedit laborum ipsum.</p>
+          </div>
+        </div>
+        <div
+          data-aos="fade-down"
+          data-aos-delay="300"
+          class="flex items-center gap-5 max-w-sm sm:col-span-2 sm:justify-self-center lg:col-span-1"
+        >
+          <div class="bg-[#fa9161] p-5 rounded-full"><img src="./img/icon-03.svg" class="w-16" /></div>
+          <div>
+            <h3 class="text-xl font-semibold text-black dark:text-white mb-2">Team Work</h3>
+            <p>Lorem, ipsum dolor sit amet soluta praesentium impedit laborum ipsum.</p>
+          </div>
+        </div>
+      </div>
+    </section>
     <!-- about us -->
+    <section id="about-us">
+      <div class="wrapper sm:flex sm:gap-20 sm:items-center py-16">
+        <div data-aos="fade-right" class="hidden relative sm:flex sm:gap-5 sm:w-1/2">
+          <div>
+            <img src="./img/shape-05.svg" class="absolute top-5 -left-5" />
+            <img src="./img/about-01.png" class="w-full mb-6" />
+            <img src="./img/about-02.png" class="w-full mb-6" />
+          </div>
+          <div>
+            <img src="./img/shape-06.svg" />
+            <img src="./img/about-03.png" class="my-6" />
+            <img src="./img/shape-07.svg" class="max-w-full mx-auto" />
+          </div>
+        </div>
+        <div data-aos="fade-left" class="sm:w-1/2">
+          <h3 class="text-[#4e6bff] font-semibold mb-4">Why Choose Us</h3>
+          <h1 class="text-3xl lg:text-5xl font-bold text-black dark:text-white lg:leading-16">
+            We Make Our customers happy by giving Best services
+          </h1>
+          <p class="my-8">
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Molestiae, culpa. Voluptatum laudantium labore sapiente, illo ut
+            assumenda voluptas fuga tempore! Eaque commodi voluptates magnam quo.
+          </p>
+          <a href="https://www.youtube.com/watch?v=FCW1ia6zBK8&list=RDAmRYri-bhJo&index=4" class="glightbox flex items-center gap-5 group">
+            <div class="relative flex items-center justify-center">
+              <span class="absolute w-full h-full rounded-full bg-[#4e6bff] opacity-40 animate-ping"></span>
+              <span class="absolute w-full h-full rounded-full bg-[#4e6bff] opacity-30 animate-ping delay-500"></span>
+              <img
+                src="./img/icon-play.svg"
+                class="bg-[#4e6bff] rounded-full p-3 transition-transform duration-300 group-hover:scale-110"
+              />
+            </div>
+            <span>SEE HOW WE WORK</span>
+          </a>
+        </div>
+      </div>
+    </section>
     <!-- team -->
+    <section id="team">
+      <div class="py-16 relative w-full lg:my-10">
+        <span class="bg-[#f4f7fa] dark:bg-[#1c2136] absolute top-0 left-0 w-full h-3/5"></span>
+        <img src="./img/shape-08.svg" class="absolute top-0 left-0" />
+        <img src="./img/shape-09.svg" class="absolute top-1/2 left-6 animate-spin [animation-duration:7s]" />
+        <img src="./img/shape-10.svg" class="absolute top-10 left-1/5" />
+        <img src="./img/shape-11.svg" class="absolute top-1/5 right-1/5 animate-spin [animation-duration:7s]" />
+        <div class="wrapper text-center relative sm:w-4/5 lg:w-1/2" data-aos="fade-down">
+          <h1 class="text-3xl lg:text-5xl font-bold text-black dark:text-white lg:leading-16 my-6">
+            Meet With Our Creative Dedicated Team
+          </h1>
+          <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. A incidunt enim labore dignissimos sunt aliquam quia quos, quae fugit
+            ipsam?
+          </p>
+        </div>
+        <div class="wrapper relative grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 mt-4 sm:mt-16 sm:gap-12 lg:px-16">
+          <div class="text-center" data-aos="fade-down">
+            <div class="relative overflow-hidden group mb-8">
+              <img src="./img/team-01.png" class="w-full" />
+              <div class="absolute inset-0 translate-y-full group-hover:translate-y-0 transition-transform duration-500">
+                <span class="absolute bottom-0 left-0 w-full h-1/5 bg-[#f36a8d]"></span>
+                <span class="absolute -bottom-6 -left-3 w-[120%] h-1/4 bg-[#4e6bff] rotate-6"></span>
+                <ul class="absolute bottom-6 flex justify-center gap-8 w-full">
+                  <li>
+                    <a href="">
+                      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512" width="20" height="20" fill="#ffffff">
+                        <path
+                          d="M279.14 288l14.22-92.66h-88.91V127.84c0-25.35 12.42-50.06 52.24-50.06H296V6.26S259.64 0 224.36 0C150.73 0 102.72 44.38 102.72 124.72V195.3H22.89V288h79.83v224h98.73V288z"
+                        />
+                      </svg>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="">
+                      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="20" height="20" fill="#ffffff">
+                        <path
+                          d="M459 151c.3 4.5.3 9 .3 13.6 0 138.7-105.6 298.6-298.6 298.6-59.5 0-114.7-17.2-161.1-47 8.4.9 16.8 1.2 25.6 1.2 49.1 0 94.2-16.8 130-45.1-46.1-.9-84.8-31.2-98.1-72.8 6.5.9 13 .9 19.8.9 9.4 0 18.8-1.3 27.6-3.6-48.1-9.7-84.3-52-84.3-103v-1.3c14.3 7.8 30.6 12.6 48 13.3-28.4-19-47-51.2-47-87.8 0-19.4 5.2-37.5 14.3-53.1 52.2 64.1 130.3 106.3 218.1 110.8-1.6-7.8-2.6-15.9-2.6-24 0-57.8 46.8-104.9 104.9-104.9 30.2 0 57.5 12.6 76.7 33 23.9-4.5 46.5-13.3 66.8-25.3-7.8 24.3-24.3 44.7-46.1 57.5 21.4-2.3 41.8-8.1 60.7-16.2-14.3 21.1-32.4 39.6-53.3 54.3z"
+                        />
+                      </svg>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="">
+                      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" width="20" height="20" fill="#ffffff">
+                        <path
+                          d="M100.28 448H7.4V148.9h92.88zm-46.44-340C24.12 108 0 83.88 0 54.16A54.16 54.16 0 0 1 54.16 0C83.88 0 108 24.12 108 54.16c0 29.72-24.12 53.84-54.16 53.84zM447.9 448h-92.68V302.4c0-34.7-.7-79.3-48.34-79.3-48.34 0-55.75 37.8-55.75 76.8V448h-92.66V148.9h89v40.8h1.28c12.4-23.5 42.7-48.3 87.8-48.3 93.9 0 111.2 61.8 111.2 142.3V448z"
+                        />
+                      </svg>
+                    </a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <h3 class="text-2xl font-semibold text-black dark:text-white mb-2">Olivia Andrium</h3>
+            <p class="mb-8 sm:mb-0">Product Manager</p>
+          </div>
+          <div class="text-center" data-aos="fade-down" data-aos-delay="150">
+            <div class="relative overflow-hidden group mb-8">
+              <img src="./img/team-02.png" class="w-full" />
+              <div class="absolute inset-0 translate-y-full group-hover:translate-y-0 transition-transform duration-500">
+                <span class="absolute bottom-0 left-0 w-full h-1/5 bg-[#f36a8d]"></span>
+                <span class="absolute -bottom-6 -left-3 w-[120%] h-1/4 bg-[#4e6bff] rotate-6"></span>
+                <ul class="absolute bottom-6 flex justify-center gap-8 w-full">
+                  <li>
+                    <a href="">
+                      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512" width="20" height="20" fill="#ffffff">
+                        <path
+                          d="M279.14 288l14.22-92.66h-88.91V127.84c0-25.35 12.42-50.06 52.24-50.06H296V6.26S259.64 0 224.36 0C150.73 0 102.72 44.38 102.72 124.72V195.3H22.89V288h79.83v224h98.73V288z"
+                        />
+                      </svg>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="">
+                      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="20" height="20" fill="#ffffff">
+                        <path
+                          d="M459 151c.3 4.5.3 9 .3 13.6 0 138.7-105.6 298.6-298.6 298.6-59.5 0-114.7-17.2-161.1-47 8.4.9 16.8 1.2 25.6 1.2 49.1 0 94.2-16.8 130-45.1-46.1-.9-84.8-31.2-98.1-72.8 6.5.9 13 .9 19.8.9 9.4 0 18.8-1.3 27.6-3.6-48.1-9.7-84.3-52-84.3-103v-1.3c14.3 7.8 30.6 12.6 48 13.3-28.4-19-47-51.2-47-87.8 0-19.4 5.2-37.5 14.3-53.1 52.2 64.1 130.3 106.3 218.1 110.8-1.6-7.8-2.6-15.9-2.6-24 0-57.8 46.8-104.9 104.9-104.9 30.2 0 57.5 12.6 76.7 33 23.9-4.5 46.5-13.3 66.8-25.3-7.8 24.3-24.3 44.7-46.1 57.5 21.4-2.3 41.8-8.1 60.7-16.2-14.3 21.1-32.4 39.6-53.3 54.3z"
+                        />
+                      </svg>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="">
+                      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" width="20" height="20" fill="#ffffff">
+                        <path
+                          d="M100.28 448H7.4V148.9h92.88zm-46.44-340C24.12 108 0 83.88 0 54.16A54.16 54.16 0 0 1 54.16 0C83.88 0 108 24.12 108 54.16c0 29.72-24.12 53.84-54.16 53.84zM447.9 448h-92.68V302.4c0-34.7-.7-79.3-48.34-79.3-48.34 0-55.75 37.8-55.75 76.8V448h-92.66V148.9h89v40.8h1.28c12.4-23.5 42.7-48.3 87.8-48.3 93.9 0 111.2 61.8 111.2 142.3V448z"
+                        />
+                      </svg>
+                    </a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <h3 class="text-2xl font-semibold text-black dark:text-white mb-2">Jemse Kemorun</h3>
+            <p class="mb-8 sm:mb-0">Product Designer</p>
+          </div>
+          <div class="text-center" data-aos="fade-down" data-aos-delay="300">
+            <div class="relative overflow-hidden group mb-8">
+              <img src="./img/team-03.png" class="w-full" />
+              <div class="absolute inset-0 translate-y-full group-hover:translate-y-0 transition-transform duration-500">
+                <span class="absolute bottom-0 left-0 w-full h-1/5 bg-[#f36a8d]"></span>
+                <span class="absolute -bottom-6 -left-3 w-[120%] h-1/4 bg-[#4e6bff] rotate-6"></span>
+                <ul class="absolute bottom-6 flex justify-center gap-8 w-full">
+                  <li>
+                    <a href="">
+                      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512" width="20" height="20" fill="#ffffff">
+                        <path
+                          d="M279.14 288l14.22-92.66h-88.91V127.84c0-25.35 12.42-50.06 52.24-50.06H296V6.26S259.64 0 224.36 0C150.73 0 102.72 44.38 102.72 124.72V195.3H22.89V288h79.83v224h98.73V288z"
+                        />
+                      </svg>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="">
+                      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="20" height="20" fill="#ffffff">
+                        <path
+                          d="M459 151c.3 4.5.3 9 .3 13.6 0 138.7-105.6 298.6-298.6 298.6-59.5 0-114.7-17.2-161.1-47 8.4.9 16.8 1.2 25.6 1.2 49.1 0 94.2-16.8 130-45.1-46.1-.9-84.8-31.2-98.1-72.8 6.5.9 13 .9 19.8.9 9.4 0 18.8-1.3 27.6-3.6-48.1-9.7-84.3-52-84.3-103v-1.3c14.3 7.8 30.6 12.6 48 13.3-28.4-19-47-51.2-47-87.8 0-19.4 5.2-37.5 14.3-53.1 52.2 64.1 130.3 106.3 218.1 110.8-1.6-7.8-2.6-15.9-2.6-24 0-57.8 46.8-104.9 104.9-104.9 30.2 0 57.5 12.6 76.7 33 23.9-4.5 46.5-13.3 66.8-25.3-7.8 24.3-24.3 44.7-46.1 57.5 21.4-2.3 41.8-8.1 60.7-16.2-14.3 21.1-32.4 39.6-53.3 54.3z"
+                        />
+                      </svg>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="">
+                      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" width="20" height="20" fill="#ffffff">
+                        <path
+                          d="M100.28 448H7.4V148.9h92.88zm-46.44-340C24.12 108 0 83.88 0 54.16A54.16 54.16 0 0 1 54.16 0C83.88 0 108 24.12 108 54.16c0 29.72-24.12 53.84-54.16 53.84zM447.9 448h-92.68V302.4c0-34.7-.7-79.3-48.34-79.3-48.34 0-55.75 37.8-55.75 76.8V448h-92.66V148.9h89v40.8h1.28c12.4-23.5 42.7-48.3 87.8-48.3 93.9 0 111.2 61.8 111.2 142.3V448z"
+                        />
+                      </svg>
+                    </a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <h3 class="text-2xl font-semibold text-black dark:text-white mb-2">Avi Pestarica</h3>
+            <p class="mb-8 sm:mb-0">Web Designer</p>
+          </div>
+        </div>
+      </div>
+    </section>
     <!-- services -->
+    <section id="services">
+      <div data-aos="fade-down" class="wrapper text-center sm:w-4/5 lg:w-1/2">
+        <h1 class="text-3xl lg:text-5xl font-bold text-black dark:text-white lg:leading-16 my-6">
+          We Offer The Best Quality Service for You
+        </h1>
+        <p>
+          Lorem, ipsum dolor sit amet consectetur adipisicing elit. Eaque est fuga nulla, minima exercitationem commodi nemo quam iure
+          itaque sint nobis.
+        </p>
+      </div>
+      <div class="wrapper grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 my-4 sm:my-6 lg:px-10">
+        <div
+          data-aos="fade-down"
+          class="p-14 rounded-md hover:shadow-gray-200 hover:shadow-2xl dark:hover:bg-[#1c2136] dark:hover:shadow-none"
+        >
+          <img src="./img/icon-04.svg" class="mb-6" />
+          <h3 class="text-2xl font-semibold text-black dark:text-white mb-3">Crafted for Startups</h3>
+          <p>Lorem ipsum dolor amet placeat consectetur adipisicing elit. Omnis veritatis qui quaerat maxime alias.</p>
+        </div>
+        <div
+          data-aos="fade-down"
+          data-aos-delay="100"
+          class="p-14 rounded-md hover:shadow-gray-200 hover:shadow-2xl dark:hover:bg-[#1c2136] dark:hover:shadow-none"
+        >
+          <img src="./img/icon-05.svg" class="mb-6" />
+          <h3 class="text-2xl font-semibold text-black dark:text-white mb-3">High-quality Design</h3>
+          <p>Lorem ipsum dolor amet placeat consectetur adipisicing elit. Omnis veritatis qui quaerat maxime alias.</p>
+        </div>
+        <div
+          data-aos="fade-down"
+          data-aos-delay="200"
+          class="p-14 rounded-md hover:shadow-gray-200 hover:shadow-2xl dark:hover:bg-[#1c2136] dark:hover:shadow-none"
+        >
+          <img src="./img/icon-06.svg" class="mb-6" />
+          <h3 class="text-2xl font-semibold text-black dark:text-white mb-3">All Essential Sections</h3>
+          <p>Lorem ipsum dolor amet placeat consectetur adipisicing elit. Omnis veritatis qui quaerat maxime alias.</p>
+        </div>
+        <div
+          data-aos="fade-down"
+          data-aos-delay="300"
+          class="p-14 rounded-md hover:shadow-gray-200 hover:shadow-2xl dark:hover:bg-[#1c2136] dark:hover:shadow-none"
+        >
+          <img src="./img/icon-07.svg" class="mb-6" />
+          <h3 class="text-2xl font-semibold text-black dark:text-white mb-3">Speed Optimized</h3>
+          <p>Lorem ipsum dolor amet placeat consectetur adipisicing elit. Omnis veritatis qui quaerat maxime alias.</p>
+        </div>
+        <div
+          data-aos="fade-down"
+          data-aos-delay="400"
+          class="p-14 rounded-md hover:shadow-gray-200 hover:shadow-2xl dark:hover:bg-[#1c2136] dark:hover:shadow-none"
+        >
+          <img src="./img/icon-05.svg" class="mb-6" />
+          <h3 class="text-2xl font-semibold text-black dark:text-white mb-3">Fully Customizable</h3>
+          <p>Lorem ipsum dolor amet placeat consectetur adipisicing elit. Omnis veritatis qui quaerat maxime alias.</p>
+        </div>
+        <div
+          data-aos="fade-down"
+          data-aos-delay="500"
+          class="p-14 rounded-md hover:shadow-gray-200 hover:shadow-2xl dark:hover:bg-[#1c2136] dark:hover:shadow-none"
+        >
+          <img src="./img/icon-06.svg" class="mb-6" />
+          <h3 class="text-2xl font-semibold text-black dark:text-white mb-3">Regular Updates</h3>
+          <p>Lorem ipsum dolor amet placeat consectetur adipisicing elit. Omnis veritatis qui quaerat maxime alias.</p>
+        </div>
+      </div>
+    </section>
     <!-- prices -->
+    <section id="prices">
+      <div class="py-16 relative lg:my-10 bg-[#f4f7fa] dark:bg-[#1c2136]">
+        <img src="./img/shape-06.svg" class="absolute top-1/20 left-1/10" />
+        <img src="./img/shape-03.svg" class="absolute top-1/3 right-1/7" />
+        <img src="./img/shape-07.svg" class="absolute bottom-1/10 right-1/20 w-25" />
+        <img src="./img/shape-12.svg" class="absolute bottom-0 left-0" />
+        <img src="./img/shape-13.svg" class="absolute top-0 right-0" />
+        <div class="wrapper text-center sm:w-4/5" data-aos="fade-down">
+          <h1 class="text-3xl lg:text-5xl font-bold text-black dark:text-white lg:leading-16 my-6">
+            We Offer Great Affordable Premium Prices
+          </h1>
+          <p>
+            It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The
+            point of using.
+          </p>
+        </div>
+        <div class="flex items-center justify-center gap-4 my-10">
+          <span class="text-black dark:text-white">Bill Monthly</span>
+          <button
+            id="pricing-switcher"
+            class="relative inline-flex h-6 w-10 items-center rounded-full bg-[#4e6bff] focus:outline-none cursor-pointer"
+          >
+            <span
+              id="switch-dot"
+              class="inline-block h-4 w-4 transform rounded-full bg-white transition-transform duration-300 translate-x-1"
+            >
+            </span>
+          </button>
+          <span class="text-black dark:text-white">Bill Annually</span>
+        </div>
+        <div class="wrapper grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-12 lg:px-16">
+          <div class="text-center px-8 py-12 rounded-xl bg-white dark:bg-[#181c31]" data-aos="fade-down">
+            <h3 class="text-2xl text-black dark:text-white mb-8">Starter</h3>
+            <div class="flex justify-center items-center gap-1 text-black dark:text-white">
+              <h2 class="text-4xl font-bold">$<span class="price" data-monthly="29" data-annually="149">29</span></h2>
+              <p class="pricing-duration">/ per month</p>
+            </div>
+            <p>No credit card required</p>
+            <button class="text-white bg-[#f36a8d] rounded-full px-12 py-2 my-8 cursor-pointer">Try for free</button>
+            <ul>
+              <li>400 GB Storaget</li>
+              <li>Unlimited Photos & Videos</li>
+              <li>Exclusive Support</li>
+            </ul>
+            <p class="text-xl text-black dark:text-white mt-5">7-day free trial</p>
+          </div>
+          <div class="text-center px-8 py-12 rounded-xl bg-white dark:bg-[#181c31]" data-aos="fade-down" data-aos-delay="150">
+            <h3 class="text-2xl text-black dark:text-white mb-8">Growth Plan</h3>
+            <div class="flex justify-center items-center gap-1 text-black dark:text-white">
+              <h2 class="text-4xl font-bold">$<span class="price" data-monthly="59" data-annually="608">59</span></h2>
+              <p class="pricing-duration">/ per month</p>
+            </div>
+            <p>No credit card required</p>
+            <button class="text-white bg-[#4e6bff] rounded-full px-12 py-2 my-8 cursor-pointer">Try for free</button>
+            <ul>
+              <li>400 GB Storaget</li>
+              <li>Unlimited Photos & Videos</li>
+              <li>Exclusive Support</li>
+            </ul>
+            <p class="text-xl text-black dark:text-white mt-5">7-day free trial</p>
+          </div>
+          <div class="text-center px-8 py-12 rounded-xl bg-white dark:bg-[#181c31]" data-aos="fade-down" data-aos-delay="300">
+            <h3 class="text-2xl text-black dark:text-white mb-8">Business</h3>
+            <div class="flex justify-center items-center gap-1 text-black dark:text-white">
+              <h2 class="text-4xl font-bold">$<span class="price" data-monthly="139" data-annually="1568">139</span></h2>
+              <p class="pricing-duration">/ per month</p>
+            </div>
+            <p>No credit card required</p>
+            <button class="text-white bg-[#f36a8d] rounded-full px-12 py-2 my-8 cursor-pointer">Try for free</button>
+            <ul>
+              <li>400 GB Storaget</li>
+              <li>Unlimited Photos & Videos</li>
+              <li>Exclusive Support</li>
+            </ul>
+            <p class="text-xl text-black dark:text-white mt-5">7-day free trial</p>
+          </div>
+        </div>
+      </div>
+    </section>
     <!-- projects -->
+    <section id="projects">
+      <div class="py-16">
+        <div class="wrapper text-center sm:w-4/5" data-aos="fade-down">
+          <h1 class="text-3xl lg:text-5xl font-bold text-black dark:text-white lg:leading-16 mb-6">
+            We Offer Great Affordable Premium Prices
+          </h1>
+          <p>
+            It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The
+            point of using.
+          </p>
+        </div>
+        <div
+          id="filter-buttons"
+          class="wrapper w-fit flex items-center justify-center flex-wrap sm:flex-nowrap gap-4 px-2 py-2 rounded-full shadow-[0_0_50px_-12px_rgba(0,0,0,0.2)] dark:shadow-none dark:bg-[#1c2136] my-10"
+        >
+          <button data-filter="all" class="filter-btn px-8 py-1 rounded-full cursor-pointer w-fit">All</button>
+          <button data-filter="brand" class="filter-btn px-8 py-1 rounded-full cursor-pointer w-fit">Branding Strategy</button>
+          <button data-filter="digital" class="filter-btn px-8 py-1 rounded-full cursor-pointer w-fit">Digital Experiences</button>
+          <button data-filter="ecommerce" class="filter-btn px-8 py-1 rounded-full cursor-pointer w-fit">Ecommerce</button>
+        </div>
+        <div id="project-container" class="wrapper grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8">
+          <div class="project-item brand ecommerce relative group overflow-hidden rounded-xl">
+            <img src="./img/project-01.png" />
+            <div
+              class="absolute top-0 left-0 w-full h-full rounded-xl flex flex-col items-center justify-center gap-4 translate-y-full bg-[#ffffff33] backdrop-blur-md opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-800 ease-out"
+            >
+              <h3 class="text-xl text-black font-semibold">Photo Retouching</h3>
+              <p class="text-gray-600">Branded Ecommerce</p>
+              <button class="bg-[#4e6bff] p-3 rounded-full cursor-pointer">
+                <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+                </svg>
+              </button>
+            </div>
+          </div>
+          <div class="project-item digital relative group overflow-hidden rounded-xl">
+            <img src="./img/project-02.png" />
+            <div
+              class="absolute top-0 left-0 w-full h-full rounded-xl flex flex-col items-center justify-center gap-4 translate-y-full bg-[#ffffff33] backdrop-blur-md opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-800 ease-out"
+            >
+              <h3 class="text-xl text-black font-semibold">Photo Retouching</h3>
+              <p class="text-gray-600">Branded Ecommerce</p>
+              <button class="bg-[#4e6bff] p-3 rounded-full cursor-pointer">
+                <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+                </svg>
+              </button>
+            </div>
+          </div>
+          <div class="project-item brand ecommerce relative group overflow-hidden rounded-xl sm:row-span-2">
+            <img src="./img/project-04.png" />
+            <div
+              class="absolute top-0 left-0 w-full h-full rounded-xl flex flex-col items-center justify-center gap-4 translate-y-full bg-[#ffffff33] backdrop-blur-md opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-800 ease-out"
+            >
+              <h3 class="text-xl text-black font-semibold">Photo Retouching</h3>
+              <p class="text-gray-600">Branded Ecommerce</p>
+              <button class="bg-[#4e6bff] p-3 rounded-full cursor-pointer">
+                <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+                </svg>
+              </button>
+            </div>
+          </div>
+          <div class="project-item digital relative group overflow-hidden rounded-xl sm:col-span-2">
+            <img src="./img/project-03.png" />
+            <div
+              class="absolute top-0 left-0 w-full h-full rounded-xl flex flex-col items-center justify-center gap-4 translate-y-full bg-[#ffffff33] backdrop-blur-md opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-800 ease-out"
+            >
+              <h3 class="text-xl text-black font-semibold">Photo Retouching</h3>
+              <p class="text-gray-600">Branded Ecommerce</p>
+              <button class="bg-[#4e6bff] p-3 rounded-full cursor-pointer">
+                <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+                </svg>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
     <!-- testimonials -->
     <!-- figures -->
     <!-- brands -->
@@ -100,23 +629,8 @@
     <!-- CTA -->
     <!-- footer -->
     <!-- back to top button -->
-    <!-- dark mode switcher script -->
-    <script>
-      const root = document.documentElement;
-      const btn = document.getElementById("theme-toggle");
-
-      const saved = localStorage.getItem("theme");
-
-      if (saved === null) {
-        root.classList.toggle("dark", window.matchMedia("(prefers-color-scheme: dark)").matches);
-      } else {
-        root.classList.toggle("dark", saved === "dark");
-      }
-
-      btn.addEventListener("click", () => {
-        const isDark = root.classList.toggle("dark");
-        localStorage.setItem("theme", isDark ? "dark" : "light");
-      });
-    </script>
+    <script src="../node_modules/glightbox/dist/js/glightbox.min.js"></script>
+    <script src="../node_modules/aos/dist/aos.js"></script>
+    <script src="./main.js"></script>
   </body>
 </html>
