@@ -1,11 +1,11 @@
 AOS.init({
   duration: 1000,
   easing: "ease-out-cubic",
-  once: true
+  once: true,
 });
 
 const lightbox = GLightbox({
-  autoplayVideos: true
+  autoplayVideos: true,
 });
 
 // dark mode switcher
@@ -76,3 +76,57 @@ pricingSwitcher.addEventListener("click", () => {
     el.innerText = isAnnually ? "/ per year" : "/ per month";
   });
 });
+
+// projects filter buttons
+const projectFilterButtons = document.querySelectorAll(".filter-btn");
+const projectItems = document.querySelectorAll(".project-item");
+
+projectFilterButtons.forEach((button) => {
+  button.addEventListener("click", () => {
+    // 1. Xử lý màu sắc nút bấm
+    projectFilterButtons.forEach((btn) => {
+      btn.classList.remove("bg-[#4e6bff]", "text-white");
+    });
+    button.classList.add("bg-[#4e6bff]", "text-white");
+
+    const filterValue = button.getAttribute("data-filter");
+
+    // 2. Ghi nhớ vị trí cũ của các item (Kỹ thuật FLIP)
+    const positions = Array.from(projectItems).map((item) => {
+      const rect = item.getBoundingClientRect();
+      return { node: item, top: rect.top, left: rect.left, width: rect.width, height: rect.height };
+    });
+
+    // 3. Thực hiện ẩn/hiện bằng class của Tailwind
+    projectItems.forEach((item) => {
+      if (filterValue === "all" || item.classList.contains(filterValue)) {
+        item.classList.remove("hidden");
+      } else {
+        item.classList.add("hidden");
+      }
+    });
+
+    // 4. Tạo hiệu ứng trượt và phóng to
+    positions.forEach((oldPos) => {
+      const item = oldPos.node;
+      if (item.classList.contains("hidden")) return;
+
+      const newRect = item.getBoundingClientRect();
+
+      // Tính toán độ lệch
+      const dx = oldPos.left - newRect.left;
+      const dy = oldPos.top - newRect.top;
+      const dw = oldPos.width / newRect.width;
+      const dh = oldPos.height / newRect.height;
+
+      // Chạy hiệu ứng trượt + phóng to từ vị trí cũ về vị trí mới
+      item.animate([{ transform: `translate(${dx}px, ${dy}px) scale(${dw}, ${dh})` }, { transform: "translate(0, 0) scale(1, 1)" }], {
+        duration: 400,
+        easing: "ease-in-out",
+      });
+    });
+  });
+});
+
+const defaultBtn = document.querySelector('[data-filter="all"]');
+if (defaultBtn) defaultBtn.click();
