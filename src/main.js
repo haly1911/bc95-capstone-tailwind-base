@@ -130,3 +130,60 @@ projectFilterButtons.forEach((button) => {
 
 const defaultBtn = document.querySelector('[data-filter="all"]');
 if (defaultBtn) defaultBtn.click();
+
+
+// testimonial simple slide animation
+const testimonialContent = document.getElementById("testimonial-content");
+const testimonialPrev = document.getElementById("testimonial-prev");
+const testimonialNext = document.getElementById("testimonial-next");
+
+if (testimonialContent && testimonialPrev && testimonialNext) {
+  const runAnimation = (className) => {
+    testimonialContent.classList.remove("testimonial-next-anim", "testimonial-prev-anim");
+
+    // ép browser reset animation
+    void testimonialContent.offsetWidth;
+
+    testimonialContent.classList.add(className);
+
+    setTimeout(() => {
+      testimonialContent.classList.remove(className);
+    }, 700);
+  };
+
+  testimonialNext.addEventListener("click", () => {
+    runAnimation("testimonial-next-anim");
+  });
+
+  testimonialPrev.addEventListener("click", () => {
+    runAnimation("testimonial-prev-anim");
+  });
+}
+
+// figures fade-in on load/scroll, không count số
+const figureItems = document.querySelectorAll(".figure-item");
+
+const figureObserver = new IntersectionObserver(
+  (entries, observer) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        figureItems.forEach((item, index) => {
+          setTimeout(() => {
+            item.classList.remove("opacity-0", "translate-y-6");
+            item.classList.add("opacity-100", "translate-y-0");
+          }, index * 150);
+        });
+
+        observer.unobserve(entry.target);
+      }
+    });
+  },
+  {
+    threshold: 0.25,
+  }
+);
+
+const figuresSection = document.querySelector("#figures");
+if (figuresSection) {
+  figureObserver.observe(figuresSection);
+}
