@@ -159,31 +159,3 @@ if (testimonialContent && testimonialPrev && testimonialNext) {
     runAnimation("testimonial-prev-anim");
   });
 }
-
-// figures fade-in on load/scroll, không count số
-const figureItems = document.querySelectorAll(".figure-item");
-
-const figureObserver = new IntersectionObserver(
-  (entries, observer) => {
-    entries.forEach((entry) => {
-      if (entry.isIntersecting) {
-        figureItems.forEach((item, index) => {
-          setTimeout(() => {
-            item.classList.remove("opacity-0", "translate-y-6");
-            item.classList.add("opacity-100", "translate-y-0");
-          }, index * 150);
-        });
-
-        observer.unobserve(entry.target);
-      }
-    });
-  },
-  {
-    threshold: 0.25,
-  }
-);
-
-const figuresSection = document.querySelector("#figures");
-if (figuresSection) {
-  figureObserver.observe(figuresSection);
-}
